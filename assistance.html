@@ -611,5 +611,26 @@ a,button{cursor:pointer}
 })();
 </script>
 <script>(function(){var i=document.querySelector('.hero-bg img');if(!i)return;var l=function(){if(i.naturalWidth>0)i.classList.add('imloaded')};if(i.complete)l();i.addEventListener('load',l);})();</script>
+<script>
+/* Active-nav corrector — sets class="active" on the link that matches the current page.
+   Defensive layer: if the HTML has the wrong active class hardcoded, this overrides it. */
+(function(){
+  var path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  if(!path || path === '') path = 'index.html';
+  // Find all nav links in both desktop nav and mobile menu
+  var links = document.querySelectorAll('.nav-right a, .nav-links a, .mm-links a');
+  links.forEach(function(a){
+    var href = (a.getAttribute('href') || '').toLowerCase();
+    // Get just the filename portion of href
+    var hrefFile = href.split('/').pop().split('#')[0].split('?')[0];
+    if(hrefFile === path) {
+      a.classList.add('active');
+    } else if(hrefFile.endsWith('.html')) {
+      // Only strip active from .html page links, not from anchor links like #contact
+      a.classList.remove('active');
+    }
+  });
+})();
+</script>
 </body>
 </html>

@@ -173,10 +173,10 @@ body:before{content:"";position:fixed;inset:0;background-image:url("data:image/s
 <nav class="nav">
  <a href="index.html" class="brand"><span class="v">VeRoMa</span> <span class="m">Media</span></a>
  <div class="nav-links">
- <a href="impact.html" class="active">Impact</a>
+ <a href="impact.html">Impact</a>
  <a href="system.html">System</a>
  <a href="assistance.html">Assistance</a>
- <a href="journal.html">Journal</a>
+ <a href="journal.html" class="active">Journal</a>
  <a href="journey.html">Journey</a>
  <a href="/#contact" class="nav-cta">Contact</a>
  </div>
@@ -341,6 +341,27 @@ body:before{content:"";position:fixed;inset:0;background-image:url("data:image/s
   document.querySelectorAll('a,button,[data-hover]').forEach(function(el){
     el.addEventListener('mouseenter',function(){cur.classList.add('hover')});
     el.addEventListener('mouseleave',function(){cur.classList.remove('hover')});
+  });
+})();
+</script>
+<script>
+/* Active-nav corrector — sets class="active" on the link that matches the current page.
+   Defensive layer: if the HTML has the wrong active class hardcoded, this overrides it. */
+(function(){
+  var path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  if(!path || path === '') path = 'index.html';
+  // Find all nav links in both desktop nav and mobile menu
+  var links = document.querySelectorAll('.nav-right a, .nav-links a, .mm-links a');
+  links.forEach(function(a){
+    var href = (a.getAttribute('href') || '').toLowerCase();
+    // Get just the filename portion of href
+    var hrefFile = href.split('/').pop().split('#')[0].split('?')[0];
+    if(hrefFile === path) {
+      a.classList.add('active');
+    } else if(hrefFile.endsWith('.html')) {
+      // Only strip active from .html page links, not from anchor links like #contact
+      a.classList.remove('active');
+    }
   });
 })();
 </script>
