@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Journal · Veroma Media. Field notes from the studio</title>
+<meta name="description" content="Essays, frameworks and field notes on building brand systems that compound. From the studio that engineers brand gravity for India's most ambitious companies." />
+<meta name="theme-color" content="#0A0908" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*:before,*:after{margin:0;padding:0;box-sizing:border-box}
+:root{
+ --bg:#0A0908;--bg-2:#13110E;--bg-3:#1A1714;
+ --ink:#F8F5EF;--ink-mute:#B5B0A6;--ink-soft:#7A7670;
+ --line:#272219;--line-2:#383127;
+ --gold:#E0B65C;--gold-warm:#C99A48;--gold-soft:#8C6B2E;
+ --serif:'Fraunces',Georgia,serif;--sans:'Inter Tight',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+ --gutter:clamp(20px,4vw,60px);--ease:cubic-bezier(.2,.7,.2,1)
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.55;font-size:16px;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:selection{background:var(--gold);color:var(--bg)}
+
+/* Grain texture */
+body:before{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.88 0 0 0 0 0.85 0 0 0 0 0.78 0 0 0 0.13 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.5;pointer-events:none;z-index:9999;mix-blend-mode:overlay}
+@media (max-width:780px){body:before{opacity:.3}}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:22px var(--gutter);display:flex;justify-content:space-between;align-items:center;background:rgba(10,9,8,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--serif);font-weight:400;font-size:30px;letter-spacing:-.018em;color:var(--ink);font-variation-settings:"opsz" 144;line-height:1;display:inline-flex;align-items:baseline;gap:8px;filter:drop-shadow(0 2px 10px rgba(0,0,0,.55))}
+.brand .v{}
+.brand .m{font-style:italic;color:var(--gold)}
+.nav-links{display:flex;gap:clamp(20px,2.6vw,42px);align-items:center;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.nav-links a{position:relative;color:var(--ink-mute);transition:color .3s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.active{color:var(--gold)}
+.nav-links a.active:before{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);width:4px;height:4px;background:var(--gold);border-radius:50%}
+.nav-cta{padding:11px 22px;border:1px solid var(--line-2);border-radius:999px;color:var(--ink);transition:all .3s var(--ease);font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
+.nav-cta:hover{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+@media (max-width:780px){.nav-links a:not(.nav-cta):not(.active){display:none}}
+
+/* HERO */
+.hero{padding:clamp(140px,18vh,200px) var(--gutter) clamp(80px,10vh,120px);max-width:1700px;margin:0 auto;position:relative}
+.hero .crumb{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:36px;display:flex;align-items:center;gap:12px}
+.hero .crumb i{display:inline-block;width:7px;height:7px;background:var(--gold);border-radius:50%;font-style:normal;box-shadow:0 0 12px var(--gold)}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(64px,11vw,180px);line-height:.92;letter-spacing:-.045em;color:var(--ink);font-variation-settings:"opsz" 144;margin-bottom:42px}
+.hero h1 em{font-style:italic;color:var(--gold);font-weight:300}
+.hero .sub{font-size:clamp(16px,1.3vw,21px);color:var(--ink-mute);max-width:640px;line-height:1.55}
+.hero .sub b{color:var(--ink);font-weight:500}
+
+/* FEATURED ARTICLE */
+.featured{padding:clamp(40px,5vh,80px) var(--gutter);max-width:1700px;margin:0 auto;border-top:1px solid var(--line)}
+.section-label{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:36px;display:flex;justify-content:space-between;align-items:center}
+.section-label .r{color:var(--ink-soft);font-weight:300}
+.feat-card{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,5vw,80px);align-items:center;padding:40px 0;border-bottom:1px solid var(--line)}
+.feat-img{aspect-ratio:4/3;border-radius:6px;background:linear-gradient(135deg,#1a0e08 0%,#0a0908 60%,#3a2410 100%);position:relative;overflow:hidden;border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.feat-img:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(224,182,92,.2) 0%,transparent 60%);z-index:1}
+.feat-img .glyph{font-family:var(--serif);font-style:italic;font-size:clamp(80px,9vw,160px);color:var(--gold);opacity:.55;line-height:1;font-variation-settings:"opsz" 144;position:relative;z-index:2;filter:drop-shadow(0 4px 20px rgba(224,182,92,.3))}
+.feat-tag{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:inline-block;padding:6px 14px;border:1px solid var(--gold-soft);border-radius:999px}
+.feat-content h2{font-family:var(--serif);font-weight:300;font-size:clamp(32px,4vw,56px);line-height:1.05;letter-spacing:-.025em;color:var(--ink);font-variation-settings:"opsz" 144;margin-bottom:28px}
+.feat-content h2 em{font-style:italic;color:var(--gold);font-weight:300}
+.feat-content .excerpt{color:var(--ink-mute);font-size:clamp(15px,1.15vw,17.5px);line-height:1.65;margin-bottom:32px;max-width:48ch}
+.feat-meta{display:flex;gap:24px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:28px}
+.feat-meta span{display:flex;align-items:center;gap:8px}
+.feat-meta span:before{content:"";width:4px;height:4px;background:var(--gold);border-radius:50%}
+.feat-cta{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding-bottom:8px;border-bottom:1px solid var(--gold);transition:gap .3s var(--ease)}
+.feat-cta:hover{gap:18px}
+@media (max-width:880px){.feat-card{grid-template-columns:1fr}}
+
+/* ARTICLE GRID */
+.archive{padding:clamp(60px,8vh,120px) var(--gutter);max-width:1700px;margin:0 auto}
+.archive h2.section-h{font-family:var(--serif);font-weight:300;font-size:clamp(36px,5vw,72px);line-height:1;letter-spacing:-.03em;color:var(--ink);font-variation-settings:"opsz" 144;margin-bottom:60px}
+.archive h2.section-h em{font-style:italic;color:var(--gold)}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:50px;font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.filters a{padding:9px 18px;border:1px solid var(--line-2);border-radius:999px;color:var(--ink-mute);transition:all .3s var(--ease)}
+.filters a.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filters a:hover{border-color:var(--gold);color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,40px)}
+.card{display:flex;flex-direction:column;gap:20px;padding:clamp(20px,2vw,30px);background:var(--bg-2);border:1px solid var(--line);border-radius:6px;transition:all .5s var(--ease)}
+.card:hover{transform:translateY(-6px);border-color:var(--gold);background:var(--bg-3);box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.card-img{aspect-ratio:16/10;border-radius:4px;position:relative;overflow:hidden;border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.card-img:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(224,182,92,.18) 0%,transparent 55%);z-index:1}
+.card-img .glyph{font-family:var(--serif);font-style:italic;font-size:clamp(42px,4.5vw,84px);color:var(--gold);opacity:.5;line-height:1;font-variation-settings:"opsz" 144;position:relative;z-index:2;filter:drop-shadow(0 2px 12px rgba(224,182,92,.25))}
+.bg-1{background:linear-gradient(135deg,#1a0e08 0%,#0a0908 70%,#3a2410 100%)}
+.bg-2{background:linear-gradient(135deg,#0a1420 0%,#0a0908 60%,#1a2a3a 100%)}
+.bg-3{background:linear-gradient(135deg,#1a0a14 0%,#0a0908 60%,#2a1024 100%)}
+.bg-4{background:linear-gradient(135deg,#0a1a14 0%,#0a0908 60%,#102a20 100%)}
+.bg-5{background:linear-gradient(135deg,#1a1a08 0%,#0a0908 60%,#2a2810 100%)}
+.bg-6{background:linear-gradient(135deg,#0a0a1a 0%,#0a0908 60%,#10142a 100%)}
+.bg-7{background:linear-gradient(135deg,#2a1a08 0%,#0a0908 60%,#3a2410 100%)}
+.bg-8{background:linear-gradient(135deg,#1a0a0a 0%,#0a0908 60%,#2a1014 100%)}
+.bg-9{background:linear-gradient(135deg,#0a1820 0%,#0a0908 60%,#1a2835 100%)}
+.card-meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase}
+.card-meta .cat{color:var(--gold)}
+.card-meta .date{color:var(--ink-mute)}
+.card h3{font-family:var(--serif);font-weight:400;font-size:clamp(18px,1.45vw,24px);line-height:1.18;letter-spacing:-.015em;color:var(--ink);font-variation-settings:"opsz" 144}
+.card h3 em{font-style:italic;color:var(--gold);font-weight:300}
+.card .excerpt{font-size:13.5px;color:var(--ink-mute);line-height:1.55}
+.card .read{margin-top:auto;padding-top:8px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:8px;transition:color .3s var(--ease)}
+.card:hover .read{color:var(--ink)}
+@media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}}
+
+/* NEWSLETTER */
+.news{padding:clamp(80px,12vh,140px) var(--gutter);max-width:1100px;margin:0 auto;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.news h3{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.5vw,64px);line-height:1.05;letter-spacing:-.028em;color:var(--ink);font-variation-settings:"opsz" 144;margin-bottom:24px}
+.news h3 em{font-style:italic;color:var(--gold)}
+.news p{color:var(--ink-mute);font-size:clamp(15px,1.15vw,18px);line-height:1.6;max-width:540px;margin:0 auto 40px}
+.news-form{display:flex;gap:8px;max-width:520px;margin:0 auto;padding:6px;background:var(--bg-2);border:1px solid var(--line-2);border-radius:999px}
+.news-form input{flex:1;background:transparent;border:0;outline:none;padding:14px 20px;color:var(--ink);font-family:var(--sans);font-size:14.5px}
+.news-form input:placeholder{color:var(--ink-soft)}
+.news-form button{background:var(--gold);color:var(--bg);border:0;font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:14px 28px;border-radius:999px;cursor:pointer;transition:background .3s var(--ease)}
+.news-form button:hover{background:var(--gold-warm)}
+.news .meta{margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* FOOTER */
+.footer{padding:clamp(60px,8vh,100px) var(--gutter) 40px;background:var(--bg);position:relative}
+.footer-inner{max-width:1700px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:40px}
+.footer .f-brand{font-family:var(--serif);font-weight:300;font-size:clamp(60px,9vw,140px);line-height:.85;letter-spacing:-.045em;color:var(--ink);font-variation-settings:"opsz" 144;filter:drop-shadow(0 6px 28px rgba(0,0,0,.55))}
+.footer .f-brand em{font-style:italic;color:var(--gold)}
+.footer .f-meta{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);text-align:right}
+.footer .f-meta a{display:block;color:var(--ink-mute);margin-bottom:6px}
+.footer .f-meta a:hover{color:var(--gold)}
+.footer .copy{margin-top:50px;padding-top:30px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+
+.nav-toggle{display:none;width:46px;height:46px;border:1px solid var(--line-2);border-radius:999px;background:rgba(10,9,8,.5);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;z-index:120;flex-shrink:0}
+.nav-toggle span{display:block;width:18px;height:1.6px;background:var(--ink);transition:transform .35s var(--ease),opacity .25s var(--ease)}
+.nav-toggle.open span:nth-child(1){transform:translateY(6.6px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6.6px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:110;background:rgba(10,9,8,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:center;padding:80px var(--gutter) 40px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .4s var(--ease),visibility .4s,transform .4s var(--ease)}
+.mobile-menu.open{opacity:1;visibility:visible;transform:translateY(0)}
+.mobile-menu a{font-family:var(--serif);font-weight:300;font-size:clamp(34px,8.5vw,60px);line-height:1.1;letter-spacing:-.03em;color:var(--ink);font-variation-settings:"opsz" 144;padding:14px 0;display:flex;align-items:baseline;gap:18px;border-bottom:1px solid var(--line)}
+.mobile-menu a:last-child{border-bottom:0}
+.mobile-menu a em{font-style:italic;color:var(--gold)}
+.mobile-menu a.cur{color:var(--gold)}
+.mobile-menu a .mm-n{font-family:var(--mono);font-size:13px;color:var(--gold);font-weight:500;letter-spacing:.1em}
+.mm-foot{margin-top:auto;padding-top:30px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media (max-width:880px){.nav-toggle{display:flex}.nav-links{display:none}}
+
+/* HERO BANNER — text overlays image, tall cinematic feel */
+.hero{position:relative !important;overflow:hidden !important;isolation:isolate;min-height:62vh;display:flex !important;flex-direction:column !important;justify-content:center !important}
+.hero-bg{position:absolute !important;inset:0 !important;z-index:0 !important;background:linear-gradient(165deg,var(--bg-2) 0%,var(--bg-3) 65%,#0e0c09 100%) !important;margin:0 !important}
+.hero-bg img{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;object-fit:cover !important;opacity:0;transition:opacity 1.2s var(--ease);filter:grayscale(.3) brightness(.5) contrast(1.08) sepia(.18) hue-rotate(-6deg) saturate(1.18)}
+.hero-bg img.imloaded{opacity:.78}
+.hero-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 100% at 30% 30%,transparent 0%,rgba(10,9,8,.55) 60%,rgba(10,9,8,.92) 100%),linear-gradient(180deg,rgba(10,9,8,.4) 0%,rgba(10,9,8,.85) 100%);z-index:1}
+.hero > *:not(.hero-bg){position:relative !important;z-index:3 !important}
+@media (max-width:780px){.hero{min-height:55vh}}
+
+/* CURSOR — Veroma V brand cursor.
+   Native cursor stays visible as fallback unless JS confirms custom cursor is loaded. */
+.cursor{position:fixed;top:0;left:0;display:inline-block;width:max-content;font-family:var(--serif);font-style:italic;font-weight:500;font-size:42px;line-height:1;color:var(--gold);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:font-size .3s var(--ease),color .3s var(--ease),text-shadow .3s var(--ease);font-variation-settings:"opsz" 144;letter-spacing:-.02em;text-shadow:0 0 14px rgba(224,182,92,.95),0 0 28px rgba(224,182,92,.65),0 0 50px rgba(224,182,92,.35),0 2px 6px rgba(0,0,0,.8);user-select:none;will-change:transform;filter:drop-shadow(0 0 6px rgba(0,0,0,.7));opacity:0;visibility:hidden}
+.custom-cursor-ready .cursor{opacity:1;visibility:visible}
+.cursor.hover{font-size:68px;color:var(--gold);text-shadow:0 0 40px rgba(224,182,92,1),0 0 80px rgba(224,182,92,.6)}
+@media (min-width:901px){
+  .custom-cursor-ready,
+  .custom-cursor-ready a,
+  .custom-cursor-ready button,
+  .custom-cursor-ready input,
+  .custom-cursor-ready textarea{cursor:pointer !important}
+}
+@media (max-width:900px){.cursor{display:none}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor">V</div>
+
+
+<nav class="nav">
+ <a href="index.html" class="brand"><span class="v">VeRoMa</span> <span class="m">Media</span></a>
+ <div class="nav-links">
+ <a href="impact.html" class="active">Impact</a>
+ <a href="system.html">System</a>
+ <a href="assistance.html">Assistance</a>
+ <a href="journal.html">Journal</a>
+ <a href="journey.html">Journey</a>
+ <a href="/#contact" class="nav-cta">Contact</a>
+ </div>
+ <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+ <nav>
+ <a href="impact.html"><span class="mm-n">01</span>Impact</a>
+ <a href="system.html"><span class="mm-n">02</span>System</a>
+ <a href="assistance.html"><span class="mm-n">03</span>Assistance</a>
+ <a href="journal.html" class="cur"><span class="mm-n">04</span>Journal</a>
+ <a href="journey.html"><span class="mm-n">05</span>Journey</a>
+ <a href="/#contact"><span class="mm-n">06</span>Contact</a>
+ </nav>
+ <div class="mm-foot"><span>Mumbai · Delhi · Dubai</span><span>hello@veromamedia.com</span></div>
+</div>
+
+<section class="hero">
+ <div class="hero-bg"><img src="https://source.unsplash.com/1800x1000/?dark,books,writing,library&sig=13" alt="Books and writing" loading="eager" /></div>
+ <div class="crumb"><i></i>Journal · Field notes from the studio</div>
+ <h1>Words that <em>compound.</em></h1>
+ <p class="sub"><b>Essays, frameworks and field notes on building brand systems that scale.</b> Read by 8,000+ founders, operators and marketers building India's next category leaders. New essay every other Thursday.</p>
+</section>
+
+<section class="featured">
+ <div class="section-label">Featured essay <span class="r">, Editor's pick</span></div>
+ <div class="feat-card">
+ <a href="#" aria-disabled="true" onclick="return false" class="feat-img bg-1"><span class="glyph">01</span></a>
+ <div class="feat-content">
+ <span class="feat-tag">Strategy</span>
+ <h2>Why most rebrands fail <em>before</em> the first sketch.</h2>
+ <p class="excerpt">The strategic gaps that doom brand overhauls, and the seven questions every founder should answer before the first creative review begins. A breakdown of patterns we've observed across 40+ engagements over five years.</p>
+ <div class="feat-meta">
+ <span>8 min read</span>
+ <span>May 2026</span>
+ <span>Ilachi Vinit Nagada</span>
+ </div>
+ <a href="#" aria-disabled="true" onclick="return false" class="feat-cta">Read essay <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.6"/></svg></a>
+ </div>
+ </div>
+</section>
+
+<section class="archive">
+ <h2 class="section-h">The <em>archive.</em></h2>
+ <div class="filters">
+ <a href="#" aria-disabled="true" onclick="return false" class="active">All</a>
+ <a href="#" aria-disabled="true" onclick="return false">Strategy</a>
+ <a href="#" aria-disabled="true" onclick="return false">Brand</a>
+ <a href="#" aria-disabled="true" onclick="return false">Growth</a>
+ <a href="#" aria-disabled="true" onclick="return false">PR</a>
+ <a href="#" aria-disabled="true" onclick="return false">Media &amp; IP</a>
+ <a href="#" aria-disabled="true" onclick="return false">Operating</a>
+ </div>
+ <div class="grid">
+ <a href="#" aria-disabled="true" onclick="return false" class="card">
+ <div class="card-img bg-2"><span class="glyph">02</span></div>
+ <div class="card-meta"><span class="cat">Growth</span><span class="date">Apr 2026 · 11 min</span></div>
+ <h3>The <em>compounding</em> power of earned media in year three.</h3>
+ <p class="excerpt">Why earned coverage beats paid in the long run, and what to build in years one and two so it kicks in. With data from 14 campaigns.</p>
+ <span class="read">Read essay <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.6"/></svg></span>
+ </a>
+ <a href="#" aria-disabled="true" onclick="return false" class="card">
+ <div class="card-img bg-3"><span class="glyph">03</span></div>
+ <div class="card-meta"><span class="cat">Brand</span><span class="date">Mar 2026 · 14 min</span></div>
+ <h3>How to engineer a <em>category</em>, not just a brand.</h3>
+ <p class="excerpt">Category-defining brands don't enter markets, they create them. The five-step framework we use with every founder we work with.</p>
+ <span class="read">Read essay <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.6"/></svg></span>
+ </a>
+ <a href="#" aria-disabled="true" onclick="return false" class="card">
+ <div class="card-img bg-4"><span class="glyph">04</span></div>
+ <div class="card-meta"><span class="cat">PR</span><span class="date">Feb 2026 · 9 min</span></div>
+ <h3>The 48-hour rule for <em>founder-led</em> PR.</h3>
+ <p class="excerpt">Tier-1 features happen when founders move at the speed of news. The operating model we've used to land 200+ in three years.</p>
+ <span class="read">Read essay <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.6"/></svg></span>
+ </a>
+ <a href="#" aria-disabled="true" onclick="return false" class="card">
+ <div class="card-img bg-5"><span class="glyph">05</span></div>
+ <div class="card-meta"><span class="cat">Strategy</span><span class="date">Feb 2026 · 12 min</span></div>
+ <h3>The economics of <em>positioning</em>, what a great brand actually costs.</h3>
+ <p class="excerpt">A blunt teardown of the cost-of-positioning across stage, sector and ambition. With benchmarked spend ranges from D2C to financial services.</p>
+ <span class="read">Read essay <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.6"/></svg></span>
+ </a>
+ <a href="#" aria-disabled="true" onclick="return false" class="card">
+ <div class="card-img bg-6"><span class="glyph">06</span></div>
+ <div class="card-meta"><span class="cat">Media &amp; IP</span><span class="date">Jan 2026 · 16 min</span></div>
+ <h3>Why content <em>IP</em> beats content engines.</h3>
+ <p class="excerpt">An argument for owning the asset, not renting the channel. With case studies from music, short-form video and editorial publishing.</p>
+ <span class="read">Read essay <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.6"/></svg></span>
+ </a>
+ <a href="#" aria-disabled="true" onclick="return false" class="card">
+ <div class="card-img bg-7"><span class="glyph">07</span></div>
+ <div class="card-meta"><span class="cat">Operating</span><span class="date">Jan 2026 · 7 min</span></div>
+ <h3>The retainer that <em>actually</em> compounds.</h3>
+ <p class="excerpt">Why most agency retainers underperform, and the operating cadence we use to make ours feel like an in-house growth office.</p>
+ <span class="read">Read essay <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.6"/></svg></span>
+ </a>
+ <a href="#" aria-disabled="true" onclick="return false" class="card">
+ <div class="card-img bg-8"><span class="glyph">08</span></div>
+ <div class="card-meta"><span class="cat">Growth</span><span class="date">Dec 2025 · 10 min</span></div>
+ <h3>CAC is a lagging indicator. <em>Brand</em> is the leading one.</h3>
+ <p class="excerpt">The relationship between unaided recall and performance efficiency, and how to measure brand investment without waiting two years.</p>
+ <span class="read">Read essay <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.6"/></svg></span>
+ </a>
+ <a href="#" aria-disabled="true" onclick="return false" class="card">
+ <div class="card-img bg-9"><span class="glyph">09</span></div>
+ <div class="card-meta"><span class="cat">Brand</span><span class="date">Dec 2025 · 13 min</span></div>
+ <h3>What we learned distributing <em>450 films</em> on YouTube.</h3>
+ <p class="excerpt">Catalog playbooks, distribution economics and the hidden compounding of dubbed cinema. Notes from running Cinekorn Entertainment.</p>
+ <span class="read">Read essay <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.6"/></svg></span>
+ </a>
+ </div>
+</section>
+
+<section class="news">
+ <h3>One essay. <em>Every other Thursday.</em></h3>
+ <p>Field notes from inside live engagements. No fluff, no recap content, no link round-ups. Just the frameworks we wish someone had handed us five years ago.</p>
+ <form class="news-form" onsubmit="event.preventDefault();this.querySelector('input').value='';this.querySelector('button').textContent='Subscribed ✓';">
+ <input type="email" placeholder="you@company.com" required />
+ <button type="submit">Subscribe</button>
+ </form>
+ <div class="meta">8,000+ readers · No spam · One-click unsubscribe</div>
+</section>
+
+<footer class="footer">
+ <div class="footer-inner">
+ <a href="/" class="f-brand">VeRoMa <em>Media</em></a>
+ <div class="f-meta">
+ <a href="/">Home</a>
+ <a href="impact.html">Work</a>
+ <a href="system.html">System</a>
+ <a href="/journal.html">Journal</a>
+ <a href="/#contact">Studio</a>
+ </div>
+ </div>
+ <div class="copy">
+ <span>© 2026 Veroma Media Private Limited</span>
+ <span>Mumbai · Delhi · Dubai</span>
+ </div>
+</footer>
+
+
+<script>
+(function(){var t=document.getElementById('navToggle'),m=document.getElementById('mobileMenu');if(t&&m){t.addEventListener('click',function(){var o=m.classList.toggle('open');t.classList.toggle('open',o);document.body.style.overflow=o?'hidden':''});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');t.classList.remove('open');document.body.style.overflow=''})})}})();
+</script>
+<script>(function(){var im=document.querySelector('.hero-bg img');if(!im)return;var l=function(){if(im.naturalWidth>0)im.classList.add('imloaded')};if(im.complete)l();im.addEventListener('load',l);})();</script>
+<script>
+(function(){
+  if(matchMedia('(max-width:900px)').matches)return;
+  var cur=document.getElementById('cursor');if(!cur)return;
+  // Initialize at viewport centre so the V is visible from the first frame
+  var cx=window.innerWidth/2,cy=window.innerHeight/2,tx=cx,ty=cy,active=false;
+  cur.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';
+  function track(e){tx=e.clientX;ty=e.clientY;if(!active){active=true;document.body.classList.add('custom-cursor-ready')}}
+  document.addEventListener('mousemove',track,{passive:true});
+  document.addEventListener('pointermove',track,{passive:true});
+  // Promote to ready after 80ms even without movement so native cursor goes away on first paint
+  (function move(){
+    cx+=(tx-cx)*0.22;cy+=(ty-cy)*0.22;
+    cur.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';
+    requestAnimationFrame(move);
+  })();
+  document.querySelectorAll('a,button,[data-hover]').forEach(function(el){
+    el.addEventListener('mouseenter',function(){cur.classList.add('hover')});
+    el.addEventListener('mouseleave',function(){cur.classList.remove('hover')});
+  });
+})();
+</script>
+</body>
+</html>
