@@ -431,6 +431,37 @@ footer{padding:clamp(60px,8vh,100px) var(--gutter) 32px;background:var(--bg)}
 
 /* Hero headline addition: "engineered." smaller line below GRAVITY. */
 .hero-eng{display:block;font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(36px,6vw,86px);line-height:1;letter-spacing:-.02em;color:var(--gold-warm);font-variation-settings:"opsz" 144;margin-top:.05em;opacity:.95}
+}
+
+/* Live site embeds — iframe fills the browser frame completely, scaled by JS */
+.frame-content{position:relative;overflow:hidden}
+.frame-content .site-embed{
+  position:absolute;
+  top:0;
+  left:0;
+  border:0;
+  transform-origin:0 0;
+  pointer-events:none;
+  background:var(--bg-2);
+  z-index:2;
+  width:1280px;
+  height:800px;
+}
+
+/* Scroll performance optimizations for iframe-heavy homepage */
+.case{
+  content-visibility:auto;
+  contain-intrinsic-size:auto 720px;  /* reserves space so scrollbar doesn't jump */
+  contain:layout style paint;
+}
+.frame-content{
+  contain:layout style paint;
+  isolation:isolate;
+}
+/* Avoid unnecessary compositing layers; only the iframe itself is a layer */
+.frame-content .site-embed{
+  will-change:auto;
+}
 </style>
 </head>
 <body>
@@ -543,7 +574,7 @@ footer{padding:clamp(60px,8vh,100px) var(--gutter) 32px;background:var(--bg)}
  <a href="https://rocketreels.co.in" target="_blank" rel="noopener" class="ph site-frame">
  <div class="frame-bar"><div class="dots"><span></span><span></span><span></span></div><div class="url">rocketreels.co.in</div></div>
  <div class="frame-content">
- <img src="https://image.thum.io/get/width/1600/wait/10/maxAge/24/https://rocketreels.co.in/" alt="Rocket Reels live website preview" loading="lazy" />
+ <iframe data-src="https://rocketreels.co.in/" title="Rocket Reels live website preview" class="site-embed" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer-when-downgrade" scrolling="no"></iframe>
  <div class="frame-fallback"><em>Rocket Reels</em>Short-form video platform for India<span>rocketreels.co.in</span></div>
  </div>
  <span class="badge">01. Rocket Reels</span>
@@ -569,7 +600,7 @@ footer{padding:clamp(60px,8vh,100px) var(--gutter) 32px;background:var(--bg)}
  <a href="https://parishicapital.com" target="_blank" rel="noopener" class="ph site-frame">
  <div class="frame-bar"><div class="dots"><span></span><span></span><span></span></div><div class="url">parishicapital.com</div></div>
  <div class="frame-content">
- <img src="https://image.thum.io/get/width/1600/wait/10/maxAge/24/https://parishicapital.com/" alt="Parishi Capital live website preview" loading="lazy" />
+ <iframe data-src="https://parishicapital.com/" title="Parishi Capital live website preview" class="site-embed" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer-when-downgrade" scrolling="no"></iframe>
  <div class="frame-fallback"><em>Parishi Capital</em>Boutique wealth advisory · family-office services<span>parishicapital.com</span></div>
  </div>
  <span class="badge">02. Parishi Capital</span>
@@ -581,7 +612,7 @@ footer{padding:clamp(60px,8vh,100px) var(--gutter) 32px;background:var(--bg)}
  <a href="https://www.cinekorn.com" target="_blank" rel="noopener" class="ph site-frame cinekorn-frame">
  <div class="frame-bar"><div class="dots"><span></span><span></span><span></span></div><div class="url">cinekorn.com</div></div>
  <div class="frame-content">
- <img src="https://image.thum.io/get/width/1600/wait/10/maxAge/24/https://www.cinekorn.com/" alt="Cinekorn Entertainment live website preview" loading="lazy" />
+ <iframe data-src="https://www.cinekorn.com/" title="Cinekorn Entertainment live website preview" class="site-embed" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer-when-downgrade" scrolling="no"></iframe>
  <div class="frame-fallback"><em>Cinekorn Entertainment</em>450+ films · 70M+ subscribers · India theatrical &amp; digital<span>cinekorn.com</span></div>
  </div>
  <span class="badge">03. Cinekorn Entertainment</span>
@@ -607,7 +638,7 @@ footer{padding:clamp(60px,8vh,100px) var(--gutter) 32px;background:var(--bg)}
  <a href="https://boosterwater.com" target="_blank" rel="noopener" class="ph site-frame">
  <div class="frame-bar"><div class="dots"><span></span><span></span><span></span></div><div class="url">boosterwater.com</div></div>
  <div class="frame-content">
- <img src="https://image.thum.io/get/width/1600/wait/10/maxAge/24/https://boosterwater.com/" alt="Booster Water live website preview" loading="lazy" />
+ <iframe data-src="https://boosterwater.com/" title="Booster Water live website preview" class="site-embed" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer-when-downgrade" scrolling="no"></iframe>
  <div class="frame-fallback"><em>Booster Water</em>Functional D2C beverage<span>boosterwater.com</span></div>
  </div>
  <span class="badge">04. Booster Water</span>
@@ -619,7 +650,7 @@ footer{padding:clamp(60px,8vh,100px) var(--gutter) 32px;background:var(--bg)}
  <a href="https://nestdevelopers.in" target="_blank" rel="noopener" class="ph site-frame">
  <div class="frame-bar"><div class="dots"><span></span><span></span><span></span></div><div class="url">nestdevelopers.in</div></div>
  <div class="frame-content">
- <img src="https://image.thum.io/get/width/1600/wait/10/maxAge/24/https://nestdevelopers.in/" alt="Nest Developers live website preview" loading="lazy" />
+ <iframe data-src="https://nestdevelopers.in/" title="Nest Developers live website preview" class="site-embed" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer-when-downgrade" scrolling="no"></iframe>
  <div class="frame-fallback"><em>Nest Developers</em>Premium real estate, Mumbai<span>nestdevelopers.in</span></div>
  </div>
  <span class="badge">05. Nest Developers</span>
@@ -645,7 +676,7 @@ footer{padding:clamp(60px,8vh,100px) var(--gutter) 32px;background:var(--bg)}
  <a href="https://gayatriai.com" target="_blank" rel="noopener" class="ph site-frame">
  <div class="frame-bar"><div class="dots"><span></span><span></span><span></span></div><div class="url">gayatriai.com</div></div>
  <div class="frame-content">
- <img src="https://image.thum.io/get/width/1600/wait/10/maxAge/24/https://gayatriai.com/" alt="Gayatri AI live website preview" loading="lazy" />
+ <iframe data-src="https://gayatriai.com/" title="Gayatri AI live website preview" class="site-embed" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer-when-downgrade" scrolling="no"></iframe>
  <div class="frame-fallback"><em>Gayatri AI</em>Frontier intelligence, productised<span>gayatriai.com</span></div>
  </div>
  <span class="badge">06. Gayatri AI</span>
@@ -966,6 +997,79 @@ window.initWebGL=function(){
       // Only strip active from .html page links, not from anchor links like #contact
       a.classList.remove('active');
     }
+  });
+})();
+</script>
+<script>
+/* Site embed fit — scales each iframe so it exactly fills its frame-content box,
+   no gutter, no clipping of width, rendering at full desktop layout. */
+(function(){
+  var IFRAME_W = 1280;  // logical desktop width that triggers proper site layout
+  function fit(){
+    document.querySelectorAll('.frame-content .site-embed').forEach(function(iframe){
+      var container = iframe.parentElement;
+      if(!container) return;
+      var cw = container.clientWidth;
+      var ch = container.clientHeight;
+      if(!cw || !ch) return;
+      var scale = cw / IFRAME_W;
+      // iframe height adjusted so scaled iframe exactly fills container height too
+      var iframeH = ch / scale;
+      iframe.style.width = IFRAME_W + 'px';
+      iframe.style.height = iframeH + 'px';
+      iframe.style.transform = 'scale(' + scale + ')';
+    });
+  }
+  function setup(){
+    fit();
+    // re-fit shortly after load so any reflow settles
+    setTimeout(fit, 100);
+    setTimeout(fit, 500);
+    setTimeout(fit, 1500);
+    window.addEventListener('resize', fit);
+    if(window.ResizeObserver){
+      var rfTimeout;
+      var throttledFit = function(){
+        if(rfTimeout) return;
+        rfTimeout = setTimeout(function(){ rfTimeout = null; fit(); }, 100);
+      };
+      var ro = new ResizeObserver(throttledFit);
+      document.querySelectorAll('.frame-content').forEach(function(el){ ro.observe(el); });
+    }
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', setup);
+  } else {
+    setup();
+  }
+})();
+</script>
+<script>
+/* Lazy-load iframes when scrolled near. Frees memory + CPU for off-screen embeds. */
+(function(){
+  if(!('IntersectionObserver' in window)) {
+    // Fallback for old browsers — load all immediately
+    document.querySelectorAll('.site-embed[data-src]').forEach(function(f){
+      f.src = f.getAttribute('data-src');
+    });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var iframe = entry.target;
+      if(entry.isIntersecting){
+        // Load when scrolled near
+        if(!iframe.src && iframe.dataset.src){
+          iframe.src = iframe.dataset.src;
+        }
+      }
+    });
+  }, {
+    rootMargin: '400px 0px',  // start loading 400px before entering viewport
+    threshold: 0
+  });
+  document.querySelectorAll('.site-embed[data-src]').forEach(function(f){
+    io.observe(f);
   });
 })();
 </script>
